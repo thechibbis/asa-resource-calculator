@@ -2,10 +2,7 @@ module github.com/thechibbis/asa-resource-calculator
 
 go 1.24.4
 
-require (
-	github.com/gocolly/colly v1.2.0
-	github.com/joho/godotenv v1.5.1
-)
+require github.com/gocolly/colly v1.2.0
 
 require (
 	github.com/PuerkitoBio/goquery v1.10.3 // indirect
