@@ -12,6 +12,7 @@ func ExtractStructureResources(resourcesText string) map[string]int {
 
 	pattern := `(\d+)\s*×\s*([^\d]*)`
 	re, err := regexp.Compile(pattern)
+	//details.Visit("https://ark.wiki.gg/wiki/Spinning_Mule_(Primitive_Plus)")
 	if err != nil {
 		slog.Error("regex error", "re", err)
 	}
