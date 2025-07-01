@@ -19,7 +19,7 @@ func GetStructuresLinks(c *colly.Collector, structuresCollector *colly.Collector
 	})
 }
 
-func GetStructureDetails(c *colly.Collector, structures []Item) {
+func GetStructureDetails(c *colly.Collector, structures *[]Item) {
 	c.OnHTML("div.info-framework", func(e *colly.HTMLElement) {
 		resourcesText := e.ChildText("div[style*='padding-left:5px'] b")
 		baseResourcesText := e.ChildText("div.mw-collapsible-content tr td")
@@ -35,7 +35,7 @@ func GetStructureDetails(c *colly.Collector, structures []Item) {
 				BaseResources: baseResources,
 			}
 
-			structures = append(structures, structure)
+			*structures = append(*structures, structure)
 		}
 	})
 }

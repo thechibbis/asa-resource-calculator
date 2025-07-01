@@ -15,31 +15,21 @@ func main() {
 		colly.CacheDir("./cache"),
 	)
 
-	scrapper.SetupCollectorLogs(c, "MainCollector")
-
 	structures := make([]scrapper.Item, 0)
 
 	structureCollector := c.Clone()
 	structureDetailsCollector := c.Clone()
 
+	scrapper.SetupCollectorLogs(c, "MainCollector")
 	scrapper.SetupCollectorLogs(structureCollector, "Structures")
 	scrapper.SetupCollectorLogs(structureDetailsCollector, "StructureDetails")
 
-	structureCollector.OnRequest(func(r *colly.Request) {
-		r.Headers.Set("User-Agent", "ASA-Resource-Calculator/1.0")
-		slog.Info("Details Visiting", "url", r.URL.String())
-	})
-
-	structureCollector.OnError(func(r *colly.Response, err error) {
-		slog.Error("Error visiting", "url", r.Request.URL.String(), "error", err)
-	})
-
 	scrapper.GetStructuresLinks(structureCollector, structureDetailsCollector)
-	scrapper.GetStructureDetails(structureDetailsCollector, structures)
+	scrapper.GetStructureDetails(structureDetailsCollector, &structures)
 
-	c.Visit("https://ark.wiki.gg/wiki/Structures")
+	structureCollector.Visit("https://ark.wiki.gg/wiki/Structures")
 
-	c.Wait()
+	structureCollector.Wait()
 
 	data, err := json.Marshal(structures)
 	if err != nil {
