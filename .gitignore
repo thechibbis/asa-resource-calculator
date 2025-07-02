@@ -1,21 +1,69 @@
+################
+### SCRAPPER ###
+################
+
 # Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
+scrapper/*.exe
+scrapper/*.exe~
+scrapper/*.dll
+scrapper/*.so
+scrapper/*.dylib
 
 # Test binary, built with `go test -c`
-*.test
+scrapper/*.test
 
 # Output of the go coverage tool, specifically when used with LiteIDE
-*.out
+scrapper/*.out
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
 # Go workspace file
-go.work
+scrapper/go.work
 
 # Go-colly cache
-cache/
+scrapper/cache/
+
+################
+### FRONTEND ###
+################
+
+# dependencies
+frontend/node_modules
+frontend/.pnp
+frontend/.pnp.*
+frontend/.yarn/*
+frontend/!.yarn/patches
+frontend/!.yarn/plugins
+frontend/!.yarn/releases
+frontend/!.yarn/versions
+
+# testing
+frontend/coverage
+
+# next.js
+frontend/.next/
+frontend/out/
+
+# production
+frontend/build
+
+# misc
+frontend/.DS_Store
+frontend/*.pem
+
+# debug
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+frontend/.env*
+
+# vercel
+frontend/.vercel
+
+# typescript
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
